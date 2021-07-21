@@ -1,15 +1,15 @@
 import numpy as np
 import math
 import collections
-
+'''
 def graus(self):
   maior = [0, 0]
   menor = [0, 10000]
   soma = 0
   distribuicao = [0 for n in range(self.nVertices)]
   frequencia = []
-
  for i in range(self.nVertices):
+ 
             aux = 0
             distribuicao[len(self.grafo[i])] = distribuicao[len(self.grafo[i])] + 1
             if maior[1] < len(self.grafo[i]):
@@ -41,7 +41,7 @@ ef conexidade(self):
         bit = bit + 1
       if bit == self.nVertices:
         return (n, t)
-
+'''
 
 
 
@@ -69,7 +69,7 @@ cont2=0
 aux2=0
 ultimo2=-1
 menor=-1
-
+medio=0
 for line in (file):
   # recuperando dados do arquivo (origem, destino e peso)
   info = line.split(" ")
@@ -103,6 +103,13 @@ for line in (file):
       aux2=1
   ultimo2=info[0]
   cont2=0
+  #grau medio
+  if (info[0]!=info[1]):
+    medio+=1
+
+
+#grau medio continuação
+medio=(medio*2)/nVertices
 #busca
 i=0
 for i in range(int(info[0])):
@@ -111,6 +118,7 @@ for i in range(int(info[0])):
   
 print("Maior grau: ",aux,"- vertice: ",maior)   
 print("Menor grau: ",aux2,"- vertice: ",menor)
+print("Grau médio: ",medio)
 
   
  
