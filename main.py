@@ -13,7 +13,7 @@ while not verificador:
 print('\n Arquivo encontrado!\n')
 arquivo = open(arquivo, 'r')
 
-#seleção de lista ou matriz para o grafo
+#seleção de lista ou matriz para o grafo.
 print('\tEscolha a representação do grafo desejado:\nSendo:')
 cond=True
 while (cond):
