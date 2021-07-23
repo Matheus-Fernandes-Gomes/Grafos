@@ -1,3 +1,4 @@
+import numpy as np
 class GrafoMatriz:
     # Inicializador
     def __init__(self, arquivo):
@@ -11,17 +12,23 @@ class GrafoMatriz:
 
     def cria_adjacencia(self, arquivo):
         # cria matriz de adjacencias
+        #lendo a primeira linha
         header = arquivo.readline()
-        info = header.split(' ')
+        info = header.replace("\n", "").split(" ")
+        #salvando nvertices e narestas
         vertices = int(info[0])
         arestas = int(info[1])
-        matriz = [[0 for _ in range(vertices)] for _ in range(vertices)]
+        #criando matriz de zeros
+        
+        matriz = int(np.zeros((vertices,vertices)))
 
         for header in arquivo:
+            # recuperando dados do arquivo (origem, destino e peso)
             info = header.split(' ')
             origem = int(info[0])
             destino = int(info[1])
             peso = int(info[2])
+            # criar matriz de adjacencias
             matriz[origem][destino] = peso
             matriz[destino][origem] = peso
         return (vertices, arestas, matriz)

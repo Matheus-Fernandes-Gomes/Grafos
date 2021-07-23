@@ -2,6 +2,7 @@ import os
 import timeit
 import funcoes_de_matrizes
 import funcoes_de_listas
+import numpy as np
 #verifica e entra no arquivo do grafo
 verificador = False
 arquivo = ''
@@ -61,15 +62,17 @@ print('Maior grau:', retorno.maior_grau[1], '- vertice:', retorno.maior_grau[0])
 print('Menor grau:', retorno.menor_grau[1], '- vertice:', retorno.menor_grau[0])
 print('\nGrau Medio:', retorno.grau_medio)
 print('Frequencia relativa:')
+'''
 for (grau, freq) in retorno.frequencia:
     print('\tGrau', grau, ': ', freq)
 #E Componentes Conexos
 print('Componentes conexas:', retorno.componentes_conexas)
+
 for item in retorno.num_conexa:
     print('-', item, 'vertices')
 print('-Tempo de execução:',  tempofinal - tempoinicio)
-tempofinal = input()
-'''
+input()
+
 print('Numero de vertices:', retorno.vertices)
 print('Numero de arestas:', retorno.num_arestas)
 '''

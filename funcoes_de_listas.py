@@ -128,13 +128,13 @@ class GrafoLista:
         t = []
         k = 0
         for i in range(self.vertices):
-            bit = 0
+            aux = 0
             if componente[i] != 0:
                 busca = self.busca_largura(componente, i)
                 t.append(len(busca))
                 k = k + 1
             for j in range(self.vertices):
                 if componente[j] == 0:
-                    bit = bit + 1
-                if bit == self.vertices:
+                    aux = aux + 1
+                if aux == self.vertices:
                     return (k, t)
