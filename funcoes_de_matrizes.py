@@ -7,7 +7,7 @@ class GrafoMatriz:
         #busca no vertices 0
         self.busca_em_largura(0)
         self.busca_de_profundidade(0)
-        (self.componentes_conexas, self.num_conexa) = self.conexidade()
+        (self.componentes_conexas, self.num_conexa) = self.conexo()
 
     def cria_adjacencia(self, arquivo):
         # cria matriz de adjacencias
@@ -129,7 +129,7 @@ class GrafoMatriz:
                     comp[v] = 0
         return R
 
-    def conexidade(self):
+    def conexo(self):
         # numero de componentes conexas no grafo, e vertices na componentes
         componente = [1 for _ in range(self.vertices)]
         t = []

@@ -6,7 +6,7 @@ class GrafoLista:
         #busca no vertice 0
         self.busca_em_largura2(0)
         self.busca_de_profundidade2(0)
-        (self.componentes_conexas, self.num_conexa) = self.conexidade()
+        (self.componentes_conexas, self.num_conexa) = self.conexos()
 
     def cria_lista(self, arquivo):
         # Cria lista de adjacencias"
@@ -122,7 +122,7 @@ class GrafoLista:
                     comp[v] = 0
         return R
 
-    def conexidade(self):
+    def conexos(self):
         # Numero de componentes conexas no grafo, e vertices na componentes
         componente = [1 for _ in range(self.vertices)]
         t = []
