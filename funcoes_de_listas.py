@@ -3,10 +3,12 @@ class GrafoLista:
     def __init__(self, arquivo):
         (self.vertices, self.arestas, self.grafo) = self.cria_lista(arquivo)
         (self.maior_grau, self.menor_grau, self.grau_medio, self.frequencia) = self.definir_graus()
-        #busca no vertice 0
-        self.busca_em_largura2(0)
-        self.busca_de_profundidade2(0)
+        #busca no vertice 1
+        self.busca_em_largura2(1)
+        self.busca_de_profundidade2(1)
         (self.componentes_conexas, self.num_conexa) = self.conexos()
+
+    
 
     def cria_lista(self, arquivo):
         # Cria lista de adjacencias"

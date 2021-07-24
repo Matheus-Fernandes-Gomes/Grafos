@@ -5,9 +5,9 @@ class GrafoMatriz:
         # Classe com todos os atributos e metodos do grafo na representação matriz de adjacencias
         (self.vertices, self.arestas, self.grafo) = self.cria_adjacencia(arquivo)
         (self.maior_grau, self.menor_grau, self.grau_medio, self.frequencia) = self.definir_graus()
-        #busca no vertices 0
-        self.busca_em_largura(0)
-        self.busca_de_profundidade(0)
+        #busca no vertices 1
+        self.busca_em_largura(1)
+        self.busca_de_profundidade(1)
         (self.componentes_conexas, self.num_conexa) = self.conexo()
 
     def cria_adjacencia(self, arquivo):
@@ -20,7 +20,7 @@ class GrafoMatriz:
         arestas = int(info[1])
         #criando matriz de zeros
         
-        matriz = int(np.zeros((vertices,vertices)))
+        matriz = (np.zeros((vertices,vertices)))
 
         for header in arquivo:
             # recuperando dados do arquivo (origem, destino e peso)
@@ -142,13 +142,13 @@ class GrafoMatriz:
         t = []
         k = 0
         for i in range(len(self.grafo)):
-            bit = 0
+            aux = 0
             if componente[i] != 0:
                 busca = self.busca_largura(componente, i)
                 t.append(len(busca))
                 k = k + 1
             for j in range(self.vertices):
                 if componente[j] == 0:
-                    bit = bit + 1
-                if bit == self.vertices:
+                    aux = aux + 1
+                if aux == self.vertices:
                     return (k, t)
