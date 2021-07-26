@@ -76,11 +76,15 @@ for (grau, freq) in retorno.frequencia:
     
 #E Componentes Conexas
 print('Componentes conexas: ', retorno.componentes_conexas)
-
+#Tempo total
+print('-Tempo de execução:',  tempofinal - tempoinicio)
+input('Pressione Enter para continuar:-> ')
+print('Numeros conexos: ')
 for item in retorno.num_conexa:
     print('-', item, 'vertices')
-print('-Tempo de execução:',  tempofinal - tempoinicio)
 input()
+
+
 
 print('Numero de vertices:', retorno.vertices)
 print('Numero de arestas:', retorno.arestas)

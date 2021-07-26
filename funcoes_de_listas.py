@@ -1,3 +1,4 @@
+import timeit
 class GrafoLista:
     # Classe com todos os atributos do grafo na representação lista de adjacencias
     def __init__(self, arquivo):
@@ -56,6 +57,8 @@ class GrafoLista:
 
     def busca_em_largura2(self, s):
         # cria um arquivo com arestas percorridas por largura
+        # Mede tempo
+        tinicio = timeit.default_timer()
         arquivo2 = open('largura.txt', 'w')
         desc = [0 for _ in range(self.vertices)]
         Q = [s]
@@ -77,9 +80,13 @@ class GrafoLista:
                 saidas = str(i) + ':' + str(ordem[i]) + '\n'
                 arquivo2.write(saidas)
         arquivo2.close()
+        tfim=timeit.default_timer()
+        return(tfim-tinicio)
 
     def busca_de_profundidade2(self, s):
         # cria um arquivo com arestas percorridas por profundidade
+        # Mede tempo
+        tinicio = timeit.default_timer()
         arquivo3 = open('profundidade.txt', 'w')
         desc = [0 for _ in range(self.vertices)]
         S = [s]
@@ -106,9 +113,12 @@ class GrafoLista:
                 saidas = str(i) + ':' + str(ordem[i]) + '\n'
                 arquivo3.write(saidas)
         arquivo3.close()
+        tfim=timeit.default_timer()
+        return(tfim-tinicio)
 
     def busca_largura(self, comp, s):
         # busca em largura para lista
+        
         desc = [0 for _ in range(self.vertices)]
         Q = [s]
         R = [s]
@@ -123,6 +133,7 @@ class GrafoLista:
                     desc[v] = 1
                     comp[v] = 0
         return R
+        
 
     def conexos(self):
         # Numero de componentes conexas no grafo, e vertices na componentes
