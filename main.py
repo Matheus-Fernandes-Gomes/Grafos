@@ -39,7 +39,10 @@ if selecao == 1:
         for item in retorno.grafo:
             print('\t', item)
     else:
-        print('\n Grafo muito grande para ser impresso')
+      print('\n Grafo muito grande para ser impresso')
+
+    print('*** Tempo de busca em Largura: ',retorno.tempo_largura_lista,'***')
+    print('*** Tempo de busca em Profundidade: ',retorno.tempo_profundidade_lista,'***')
 else:
     #Matriz de adjacencias
     print('\n\nMatriz de adjacencias:')
@@ -54,6 +57,10 @@ else:
             print('\t', item)
     else:
         print('\n Grafo muito grande para ser impresso')
+    #tempo de busca
+    print('*** Tempo de busca em Largura: ',retorno.tempo_largura,'***')
+    print('*** Tempo de busca em Profundidade: ',retorno.tempo_profundidade,'***')
+
 
 
 #C vertice de maior e menor grau, o grau medio dos vertices e a distribuicão empirica do grau dos vertices
@@ -65,6 +72,7 @@ print('Frequencia relativa:')
 
 for (grau, freq) in retorno.frequencia:
     print('\tGrau', grau, ': ', freq)
+
     
 #E Componentes Conexas
 print('Componentes conexas: ', retorno.componentes_conexas)

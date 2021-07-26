@@ -1,4 +1,5 @@
 import numpy as np
+import timeit
 class GrafoMatriz:
     # Inicializador
     def __init__(self, arquivo):
@@ -6,20 +7,20 @@ class GrafoMatriz:
         (self.vertices, self.arestas, self.grafo) = self.cria_adjacencia(arquivo)
         (self.maior_grau, self.menor_grau, self.grau_medio, self.frequencia) = self.definir_graus()
         #busca no vertices 1
-        self.busca_em_largura(1)
-        self.busca_de_profundidade(1)
+        self.tempo_largura=self.busca_em_largura(0)
+        self.tempo_profundidade=self.busca_de_profundidade(0)
         (self.componentes_conexas, self.num_conexa) = self.conexo()
 
     def cria_adjacencia(self, arquivo):
         # cria matriz de adjacencias
         #lendo a primeira linha
         header = arquivo.readline()
-        info = header.replace("\n", "").split(" ")
+        info = header.split(" ")
         #salvando nvertices e narestas
         vertices = int(info[0])
         arestas = int(info[1])
         #criando matriz de zeros
-        
+        #[[0 for _ in range(vertices)] for _ in range(vertices)]
         matriz = (np.zeros((vertices,vertices)))
 
         for header in arquivo:
@@ -31,6 +32,7 @@ class GrafoMatriz:
             # criar matriz de adjacencias
             matriz[origem][destino] = peso
             matriz[destino][origem] = peso
+
         return (vertices, arestas, matriz)
 
     def definir_graus(self):
@@ -66,7 +68,8 @@ class GrafoMatriz:
 
     def busca_em_largura(self, s):
         # cria um arquivo com arestas percorridas por largura
-
+        # Mede tempo
+        tinicio = timeit.default_timer()
         arquivo2 = open('nivel_largura.txt', 'w')
         desc = [0 for _ in range(len(self.grafo))]
         Q = [s]
@@ -88,10 +91,13 @@ class GrafoMatriz:
                 saidas = str(i) + ':' + str(ordem[i]) + '\n'
                 arquivo2.write(saidas)
         arquivo2.close()
+        tfim=timeit.default_timer()
+        return(tfim-tinicio)
 
     def busca_de_profundidade(self, s):
         # cria um arquivo com arestas percorridas por profundidade
-
+        # Mede tempo
+        tinicio = timeit.default_timer()
         arquivo3 = open('nivel_profundidade.txt', 'w')
         desc = [0 for _ in range(len(self.grafo))]
         S = [s]
@@ -118,6 +124,8 @@ class GrafoMatriz:
                 saidas = str(i) + ':' + str(ordem[i]) + '\n'
                 arquivo3.write(saidas)
         arquivo3.close()
+        tfinal=timeit.default_timer()
+        return(tfinal-tinicio)
 
     def busca_largura(self, comp, s):
         # busca em largura 
@@ -135,6 +143,7 @@ class GrafoMatriz:
                     desc[v] = 1
                     comp[v] = 0
         return R
+        
 
     def conexo(self):
         # numero de componentes conexas no grafo, e vertices na componentes

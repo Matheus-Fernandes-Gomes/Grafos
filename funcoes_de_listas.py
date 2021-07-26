@@ -4,8 +4,8 @@ class GrafoLista:
         (self.vertices, self.arestas, self.grafo) = self.cria_lista(arquivo)
         (self.maior_grau, self.menor_grau, self.grau_medio, self.frequencia) = self.definir_graus()
         #busca no vertice 1
-        self.busca_em_largura2(1)
-        self.busca_de_profundidade2(1)
+        self.tempo_largura_lista=self.busca_em_largura2(0)
+        self.tempo_profundidade_lista=self.busca_de_profundidade2(0)
         (self.componentes_conexas, self.num_conexa) = self.conexos()
 
     
